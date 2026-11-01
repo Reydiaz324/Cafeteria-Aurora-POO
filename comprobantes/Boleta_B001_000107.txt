@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000107
+====================================================
+Fecha Emision : 2026-10-18 15:30
+Codigo Pedido : AU-1007
+Cliente       : Sofía Vargas Medina
+DNI           : 71234901
+Atendido por  : Paola Mendoza
+Metodo Pago   : Plin
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Caramelo Frapuccino         2     14.00      28.00
+Galleta de chocolate        2      5.00      10.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   32.20
+IGV (18% Incluido):                   S/    5.80
+IMPORTE TOTAL A PAGAR:                S/   38.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

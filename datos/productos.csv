@@ -1,0 +1,23 @@
+ID;NOMBRE;DESCRIPCION;PRECIO;STOCK;STOCK_MIN;ID_CATEGORIA;ID_PROVEEDOR;ESTADO
+1;Latte;Bebida caliente con café espresso y leche vaporizada;12.00;24;10;1;3;Activo
+2;Cappuccino;Bebida caliente con espresso, leche y espuma;11.50;41;10;1;3;Activo
+3;Mocha;Bebida caliente con café, leche y chocolate;13.00;38;10;1;3;Activo
+4;Mocha Frapuccino;Bebida fría con café, leche, chocolate y hielo;13.00;15;10;2;3;Activo
+5;Espresso;Café concentrado servido en porción pequeña;8.00;50;10;1;3;Activo
+6;Espresso Doble;Café concentrado servido en porción doble;9.50;48;10;1;3;Activo
+7;Cold Brew;Café frío preparado por infusión lenta;13.50;30;10;2;3;Activo
+8;Muffins de naranja;Muffin de naranja en porción individual;7.00;25;10;4;1;Activo
+9;Brownies;Postre de chocolate en porción individual;8.50;10;10;4;1;Activo
+10;Cheesecake;Postre frío a base de queso crema;12.50;18;10;4;1;Activo
+11;Croissants;Postre de masa hojaldrada para acompañamiento;9.00;24;10;4;2;Activo
+12;Muffins de manzana;Muffin de manzana en porción individual;7.00;22;10;4;1;Activo
+13;Panino Vesubio;Panino Vesubio preparado para venta directa;14.00;28;10;3;2;Activo
+14;Chicken Panino;Panino de pollo preparado para venta directa;13.50;30;10;3;2;Activo
+15;Chicken Ciabatta;Ciabatta de pollo preparada para venta directa;14.50;12;10;3;2;Activo
+16;Triple;Sándwich triple preparado para venta directa;8.50;34;10;3;2;Activo
+17;Galleta de chocolate;Galleta de chocolate para acompañamiento;5.00;40;10;4;1;Activo
+18;Galleta de chispas de chocolate;Galleta con chispas de chocolate;5.50;45;10;4;1;Activo
+19;Vainilla Frapuccino;Bebida fría sabor vainilla con leche y hielo;13.50;30;10;2;3;Activo
+20;Caramelo Frapuccino;Bebida fría sabor caramelo con leche y hielo;14.00;28;10;2;3;Activo
+21;Fresa Frapuccino;Bebida fría sabor fresa con leche y hielo;13.50;26;10;2;3;Activo
+22;Chocolate Blanco Frapuccino;Bebida fría sabor chocolate blanco;14.50;25;10;2;3;Activo

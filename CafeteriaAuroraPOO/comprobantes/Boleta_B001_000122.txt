@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000122
+====================================================
+Fecha Emision : 2026-10-27 12:45
+Codigo Pedido : AU-1022
+Cliente       : Mónica Chávez Prado
+DNI           : 76019283
+Atendido por  : Elena Paredes
+Metodo Pago   : Tarjeta
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Chicken Ciabatta            1     14.50      14.50
+Latte                       1     12.00      12.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   22.46
+IGV (18% Incluido):                   S/    4.04
+IMPORTE TOTAL A PAGAR:                S/   26.50
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

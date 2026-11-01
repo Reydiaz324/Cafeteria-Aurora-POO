@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000105
+====================================================
+Fecha Emision : 2026-10-17 08:45
+Codigo Pedido : AU-1005
+Cliente       : Camila Torres Paredes
+DNI           : 73918204
+Atendido por  : Ruben Flores
+Metodo Pago   : Yape
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Latte                       1     12.00      12.00
+Muffins de naranja          2      7.00      14.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   22.03
+IGV (18% Incluido):                   S/    3.97
+IMPORTE TOTAL A PAGAR:                S/   26.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

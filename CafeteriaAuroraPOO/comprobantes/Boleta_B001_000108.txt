@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000108
+====================================================
+Fecha Emision : 2026-10-18 16:45
+Codigo Pedido : AU-1008
+Cliente       : Andrea Delgado Cruz
+DNI           : 75820192
+Atendido por  : Elena Paredes
+Metodo Pago   : Yape
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Espresso Doble              2      9.50      19.00
+Brownies                    2      8.50      17.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   30.51
+IGV (18% Incluido):                   S/    5.49
+IMPORTE TOTAL A PAGAR:                S/   36.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

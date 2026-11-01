@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000111
+====================================================
+Fecha Emision : 2026-10-20 08:15
+Codigo Pedido : AU-1011
+Cliente       : Rodrigo Silva Huamán
+DNI           : 76192834
+Atendido por  : Jose Castillo
+Metodo Pago   : Yape
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Cappuccino                  2     11.50      23.00
+Muffins de manzana          1      7.00       7.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   25.42
+IGV (18% Incluido):                   S/    4.58
+IMPORTE TOTAL A PAGAR:                S/   30.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

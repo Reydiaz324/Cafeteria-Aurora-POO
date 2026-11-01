@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000119
+====================================================
+Fecha Emision : 2026-10-24 16:10
+Codigo Pedido : AU-1019
+Cliente       : Manuel Espinoza Ortiz
+DNI           : 41920384
+Atendido por  : Ruben Flores
+Metodo Pago   : Tarjeta
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Chicken Panino              2     13.50      27.00
+Caramelo Frapuccino         1     14.00      14.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   34.75
+IGV (18% Incluido):                   S/    6.25
+IMPORTE TOTAL A PAGAR:                S/   41.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

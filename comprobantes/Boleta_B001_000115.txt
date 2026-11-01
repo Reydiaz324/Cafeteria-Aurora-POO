@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000115
+====================================================
+Fecha Emision : 2026-10-22 09:40
+Codigo Pedido : AU-1015
+Cliente       : Fernando Mendoza Campos
+DNI           : 42819204
+Atendido por  : Jose Castillo
+Metodo Pago   : Efectivo
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Panino Vesubio              2     14.00      28.00
+Cold Brew                   1     13.50      13.50
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   35.17
+IGV (18% Incluido):                   S/    6.33
+IMPORTE TOTAL A PAGAR:                S/   41.50
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

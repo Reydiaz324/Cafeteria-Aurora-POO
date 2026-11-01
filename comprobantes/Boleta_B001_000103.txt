@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000103
+====================================================
+Fecha Emision : 2026-10-16 10:04
+Codigo Pedido : AU-1003
+Cliente       : Lucía Morales Silva
+DNI           : 70923481
+Atendido por  : Jose Castillo
+Metodo Pago   : Plin
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Mocha Frapuccino            2     13.00      26.00
+Cheesecake                  1     12.50      12.50
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   32.63
+IGV (18% Incluido):                   S/    5.87
+IMPORTE TOTAL A PAGAR:                S/   38.50
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

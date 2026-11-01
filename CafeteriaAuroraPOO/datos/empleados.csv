@@ -1,0 +1,6 @@
+ID_EMPLEADO;NOMBRES;APELLIDOS;DNI;CARGO;CONTRATO;SUELDO_BASE;TURNO;ESTADO
+1;Mariana;Vega;45678912;Encargado;Full Time;2500.00;Mañana;Activo
+2;Jose;Castillo;46789123;Barista;Full Time;1400.00;Mañana;Activo
+3;Paola;Mendoza;47891234;Barista;Full Time;1400.00;Mañana;Activo
+4;Ruben;Flores;48912345;Barista;Full Time;1400.00;Tarde;Activo
+5;Elena;Paredes;49123456;Barista;Part Time;800.00;Tarde;Activo

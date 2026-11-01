@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000102
+====================================================
+Fecha Emision : 2026-10-15 09:15
+Codigo Pedido : AU-1002
+Cliente       : Carlos Ramírez Flores
+DNI           : 45129834
+Atendido por  : Paola Mendoza
+Metodo Pago   : Tarjeta
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Cappuccino                  1     11.50      11.50
+Croissants                  2      9.00      18.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   25.00
+IGV (18% Incluido):                   S/    4.50
+IMPORTE TOTAL A PAGAR:                S/   29.50
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

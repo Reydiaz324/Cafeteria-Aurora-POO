@@ -1,0 +1,3 @@
+ID_PEDIDO;CODIGO;FECHA_HORA;CLIENTE;EMPLEADO;METODO_PAGO;MODALIDAD;TOTAL;ESTADO;DETALLE_ITEMS
+1;AU-1001;2026-10-31 19:11;Valeria Mendoza Ríos;Jose Castillo;Yape;En local;32.50;REGISTRADO;Lattex2|Browniesx1
+2;AU-1002;2026-10-31 19:11;Camila Torres Vargas;Mariana Vega;Tarjeta;En local;62.00;REGISTRADO;Chicken Ciabattax2|Mocha Frapuccinox2

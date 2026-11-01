@@ -1,0 +1,37 @@
+========================================================================================
+                                 CAFETERIA AURORA
+                 REPORTE DE INVENTARIO Y STOCK ACTUAL DE PRODUCTOS
+========================================================================================
+Fecha de Auditoría: 2026-10-31 20:00
+Total de Productos : 22 ítems en carta activa
+----------------------------------------------------------------------------------------
+ID  PRODUCTO                     CATEGORÍA         PRECIO (S/)  STOCK   STOCK MIN  ESTADO
+----------------------------------------------------------------------------------------
+1   Latte                        Calientes           12.00        24        10     Óptimo
+2   Cappuccino                   Calientes           11.50        41        10     Óptimo
+3   Mocha                        Calientes           13.00        38        10     Óptimo
+4   Mocha Frapuccino             Frías               13.00        15        10     Regular
+5   Espresso                     Calientes            8.00        50        10     Óptimo
+6   Espresso Doble               Calientes            9.50        48        10     Óptimo
+7   Cold Brew                    Frías               13.50        30        10     Óptimo
+8   Muffins de naranja           Repostería           7.00        25        10     Óptimo
+9   Brownies                     Repostería           8.50        10        10     Alerta
+10  Cheesecake                   Repostería          12.50        18        10     Regular
+11  Croissants                   Repostería           9.00        24        10     Óptimo
+12  Muffins de manzana           Repostería           7.00        22        10     Óptimo
+13  Panino Vesubio               Panadería           14.00        28        10     Óptimo
+14  Chicken Panino               Panadería           13.50        30        10     Óptimo
+15  Chicken Ciabatta             Panadería           14.50        12        10     Regular
+16  Triple                       Panadería            8.50        34        10     Óptimo
+17  Galleta de chocolate         Repostería           5.00        40        10     Óptimo
+18  Galleta chispas chocolate    Repostería           5.50        45        10     Óptimo
+19  Vainilla Frapuccino          Frías               13.50        30        10     Óptimo
+20  Caramelo Frapuccino          Frías               14.00        28        10     Óptimo
+21  Fresa Frapuccino             Frías               13.50        26        10     Óptimo
+22  Chocolate Blanco Frapuccino  Frías               14.50        25        10     Óptimo
+========================================================================================
+Resumen de Stock:
+- Ítems en estado óptimo (>20 unidades) : 17 productos
+- Ítems en estado regular (11-20 unid.) : 4 productos
+- Ítems en stock crítico / reposición   : 1 producto (Brownies: 10 unidades)
+========================================================================================

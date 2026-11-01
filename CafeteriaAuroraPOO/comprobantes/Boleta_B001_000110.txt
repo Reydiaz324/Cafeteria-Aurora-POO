@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000110
+====================================================
+Fecha Emision : 2026-10-19 11:05
+Codigo Pedido : AU-1010
+Cliente       : Gabriela Ponce Soto
+DNI           : 74019283
+Atendido por  : Mariana Vega
+Metodo Pago   : Tarjeta
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Vainilla Frapuccino         1     13.50      13.50
+Cheesecake                  1     12.50      12.50
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   22.03
+IGV (18% Incluido):                   S/    3.97
+IMPORTE TOTAL A PAGAR:                S/   26.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

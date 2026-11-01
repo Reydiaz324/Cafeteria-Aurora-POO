@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000120
+====================================================
+Fecha Emision : 2026-10-25 09:30
+Codigo Pedido : AU-1020
+Cliente       : Natalia Benítez Salas
+DNI           : 73019284
+Atendido por  : Jose Castillo
+Metodo Pago   : Yape
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Mocha Frapuccino            1     13.00      13.00
+Muffins de naranja          2      7.00      14.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   22.88
+IGV (18% Incluido):                   S/    4.12
+IMPORTE TOTAL A PAGAR:                S/   27.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

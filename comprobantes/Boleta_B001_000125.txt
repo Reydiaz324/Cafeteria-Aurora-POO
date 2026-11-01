@@ -1,0 +1,27 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000125
+====================================================
+Fecha Emision : 2026-10-30 11:10
+Codigo Pedido : AU-1025
+Cliente       : Joaquín Guerrero Soto
+DNI           : 71928304
+Atendido por  : Jose Castillo
+Metodo Pago   : Tarjeta
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Mocha                       2     13.00      26.00
+Cheesecake                  1     12.50      12.50
+Galleta de chocolate        1      5.00       5.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   36.86
+IGV (18% Incluido):                   S/    6.64
+IMPORTE TOTAL A PAGAR:                S/   43.50
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

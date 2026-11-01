@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000124
+====================================================
+Fecha Emision : 2026-10-29 08:50
+Codigo Pedido : AU-1024
+Cliente       : Vanessa Alva Romero
+DNI           : 75201928
+Atendido por  : Mariana Vega
+Metodo Pago   : Yape
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Cappuccino                  2     11.50      23.00
+Panino Vesubio              1     14.00      14.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   31.36
+IGV (18% Incluido):                   S/    5.64
+IMPORTE TOTAL A PAGAR:                S/   37.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

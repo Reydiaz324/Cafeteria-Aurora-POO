@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000123
+====================================================
+Fecha Emision : 2026-10-28 15:20
+Codigo Pedido : AU-1023
+Cliente       : Ricardo Paredes Nuñez
+DNI           : 44192038
+Atendido por  : Ruben Flores
+Metodo Pago   : Plin
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Vainilla Frapuccino         1     13.50      13.50
+Brownies                    1      8.50       8.50
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   18.64
+IGV (18% Incluido):                   S/    3.36
+IMPORTE TOTAL A PAGAR:                S/   22.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

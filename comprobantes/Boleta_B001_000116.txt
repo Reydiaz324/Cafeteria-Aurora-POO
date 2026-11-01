@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000116
+====================================================
+Fecha Emision : 2026-10-22 13:05
+Codigo Pedido : AU-1016
+Cliente       : Claudia Herrera Ruiz
+DNI           : 75192830
+Atendido por  : Paola Mendoza
+Metodo Pago   : Tarjeta
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Chocolate Blanco Frapuccino    1     14.50      14.50
+Cheesecake                  1     12.50      12.50
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   22.88
+IGV (18% Incluido):                   S/    4.12
+IMPORTE TOTAL A PAGAR:                S/   27.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

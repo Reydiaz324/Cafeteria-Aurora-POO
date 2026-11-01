@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000113
+====================================================
+Fecha Emision : 2026-10-21 10:50
+Codigo Pedido : AU-1013
+Cliente       : Alejandro Ramos Vera
+DNI           : 47281920
+Atendido por  : Elena Paredes
+Metodo Pago   : Tarjeta
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Fresa Frapuccino            1     13.50      13.50
+Galleta de chispas de chocolate    2      5.50      11.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   20.76
+IGV (18% Incluido):                   S/    3.74
+IMPORTE TOTAL A PAGAR:                S/   24.50
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

@@ -1,0 +1,5 @@
+ID_CLIENTE;NOMBRES;APELLIDOS;DNI;TELEFONO;CORREO;TIPO_CLIENTE;RUC;RAZON_SOCIAL;PUNTOS
+1;Valeria;Mendoza Ríos;72849102;987654321;valeria.mendoza@gmail.com;Frecuente;;;38
+2;Diego;Ramos Paredes;45891203;912345678;diego.ramos@hotmail.com;General;;;10
+3;Camila;Torres Vargas;74125896;945612378;camila.torres@upn.pe;Corporativo;20601234567;INVERSIONES NORTE PERU S.A.C.;56
+4;Luis;Paredes Silva;70159482;963852741;luis.paredes@empresa.pe;Corporativo;20559874123;CONSULTORA TECNOLOGICA DEL NORTE E.I.R.L.;25

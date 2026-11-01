@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000109
+====================================================
+Fecha Emision : 2026-10-19 09:20
+Codigo Pedido : AU-1009
+Cliente       : Javier Navarro Luna
+DNI           : 43910283
+Atendido por  : Ruben Flores
+Metodo Pago   : Efectivo
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Chicken Panino              1     13.50      13.50
+Latte                       1     12.00      12.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   21.61
+IGV (18% Incluido):                   S/    3.89
+IMPORTE TOTAL A PAGAR:                S/   25.50
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

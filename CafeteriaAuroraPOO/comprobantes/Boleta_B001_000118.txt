@@ -1,0 +1,27 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000118
+====================================================
+Fecha Emision : 2026-10-23 11:40
+Codigo Pedido : AU-1018
+Cliente       : Patricia Loyola Díaz
+DNI           : 72019283
+Atendido por  : Elena Paredes
+Metodo Pago   : Plin
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Cappuccino                  1     11.50      11.50
+Brownies                    1      8.50       8.50
+Espresso                    1      8.00       8.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   23.73
+IGV (18% Incluido):                   S/    4.27
+IMPORTE TOTAL A PAGAR:                S/   28.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

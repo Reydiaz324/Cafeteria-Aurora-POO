@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000117
+====================================================
+Fecha Emision : 2026-10-23 08:25
+Codigo Pedido : AU-1017
+Cliente       : Sebastián Córdova Vega
+DNI           : 74102938
+Atendido por  : Mariana Vega
+Metodo Pago   : Yape
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Latte                       2     12.00      24.00
+Triple                      1      8.50       8.50
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   27.54
+IGV (18% Incluido):                   S/    4.96
+IMPORTE TOTAL A PAGAR:                S/   32.50
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

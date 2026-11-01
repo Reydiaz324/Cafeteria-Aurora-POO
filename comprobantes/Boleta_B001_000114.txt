@@ -1,0 +1,27 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000114
+====================================================
+Fecha Emision : 2026-10-21 17:15
+Codigo Pedido : AU-1014
+Cliente       : Beatriz Gutiérrez Paz
+DNI           : 73819203
+Atendido por  : Ruben Flores
+Metodo Pago   : Yape
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Mocha                       1     13.00      13.00
+Croissants                  1      9.00       9.00
+Galleta de chocolate        1      5.00       5.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   22.88
+IGV (18% Incluido):                   S/    4.12
+IMPORTE TOTAL A PAGAR:                S/   27.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

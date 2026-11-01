@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000121
+====================================================
+Fecha Emision : 2026-10-26 10:15
+Codigo Pedido : AU-1021
+Cliente       : Álvaro Cáceres León
+DNI           : 48192034
+Atendido por  : Paola Mendoza
+Metodo Pago   : Efectivo
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Cold Brew                   2     13.50      27.00
+Croissants                  1      9.00       9.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   30.51
+IGV (18% Incluido):                   S/    5.49
+IMPORTE TOTAL A PAGAR:                S/   36.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

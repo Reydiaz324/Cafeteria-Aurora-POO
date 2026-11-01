@@ -1,0 +1,19 @@
+========================================================================================
+                                 CAFETERIA AURORA
+                REPORTE TOP 10 PRODUCTOS MAS VENDIDOS - HISTORICO 2026
+========================================================================================
+Fecha de Emisión: 2026-10-31 20:00
+----------------------------------------------------------------------------------------
+RANK  PRODUCTO                     CATEGORÍA      CANTIDAD VENDIDA   TOTAL RECAUDADO (S/)
+----------------------------------------------------------------------------------------
+ 1    Latte                        Calientes           1,420           S/  17,040.00
+ 2    Cappuccino                   Calientes           1,280           S/  14,720.00
+ 3    Mocha Frapuccino             Frías                 980           S/  12,740.00
+ 4    Panino Vesubio               Panadería             790           S/  11,060.00
+ 5    Chicken Panino               Panadería             720           S/   9,720.00
+ 6    Cold Brew                    Frías                 680           S/   9,180.00
+ 7    Cheesecake                   Repostería            650           S/   8,125.00
+ 8    Mocha                        Calientes             610           S/   7,930.00
+ 9    Croissants                   Repostería            590           S/   5,310.00
+10    Brownies                     Repostería            550           S/   4,675.00
+========================================================================================

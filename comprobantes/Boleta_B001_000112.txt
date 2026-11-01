@@ -1,0 +1,26 @@
+====================================================
+                 CAFETERIA AURORA                   
+              RUC: 20608945123                      
+====================================================
+            BOLETA DE VENTA ELECTRONICA             
+                 B001-000112
+====================================================
+Fecha Emision : 2026-10-20 14:22
+Codigo Pedido : AU-1012
+Cliente       : Daniela Castro Reyes
+DNI           : 71029384
+Atendido por  : Paola Mendoza
+Metodo Pago   : Plin
+----------------------------------------------------
+PRODUCTO                  CANT    P.UNIT   SUBTOTAL
+----------------------------------------------------
+Triple                      2      8.50      17.00
+Espresso                    1      8.00       8.00
+----------------------------------------------------
+Op. Gravada (Subtotal):               S/   21.19
+IGV (18% Incluido):                   S/    3.81
+IMPORTE TOTAL A PAGAR:                S/   25.00
+====================================================
+   Representacion impresa de Boleta Electronica     
+        ¡Gracias por preferir Cafeteria Aurora!     
+====================================================

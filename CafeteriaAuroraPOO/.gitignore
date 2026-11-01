@@ -1,0 +1,25 @@
+# NetBeans / Ant
+build/
+nbproject/private/
+
+# Compilados de Java
+*.class
+
+# IDEs y Editores
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Archivos de sistema operativo
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Archivos temporales y logs
+*.tmp
+*.log
+*.bak
+*.orig
