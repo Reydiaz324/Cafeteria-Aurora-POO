@@ -1,11 +1,9 @@
 package vista;
 
 import controlador.GestorCafeteria;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -22,11 +20,10 @@ import modelo.Pedido;
 import modelo.Producto;
 
 /**
- * FORMULARIO VISUAL DE NETBEANS: FrmPOSVisual
- * Cuenta con archivo .form para habilitar la pestaña [Design] en NetBeans.
- * Permite arrastrar botones, moverlos de lugar con el mouse y modificarlos desde la paleta.
+ * FORMULARIO: FrmPedido
+ * Pantalla de atención y Punto de Venta (POS) con soporte visual en NetBeans (.form).
  */
-public class FrmPOSVisual extends javax.swing.JFrame {
+public class FrmPedido extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
 
     private GestorCafeteria gestor;
@@ -47,12 +44,12 @@ public class FrmPOSVisual extends javax.swing.JFrame {
         }
     }
 
-    public FrmPOSVisual() {
+    public FrmPedido() {
         this(new GestorCafeteria());
     }
 
-    public FrmPOSVisual(GestorCafeteria gestor) {
-        this.gestor = gestor;
+    public FrmPedido(GestorCafeteria gestor) {
+        this.gestor = gestor != null ? gestor : new GestorCafeteria();
         initComponents();
         personalizarComponentes();
         cargarEmpleados();
@@ -62,7 +59,6 @@ public class FrmPOSVisual extends javax.swing.JFrame {
     }
 
     private void personalizarComponentes() {
-        // Modelos de tabla no editables
         modeloProductos = new DefaultTableModel(new String[]{"ID", "Producto", "Precio (S/)", "Stock Disp."}, 0) {
             private static final long serialVersionUID = 1L;
             @Override public boolean isCellEditable(int row, int col) { return false; }
@@ -75,7 +71,7 @@ public class FrmPOSVisual extends javax.swing.JFrame {
         };
         tblCarrito.setModel(modeloCarrito);
 
-        // DocumentFilter para 8 dígitos de DNI estrictos
+        // DocumentFilter: 8 dígitos numéricos exactos
         ((AbstractDocument) txtDni.getDocument()).setDocumentFilter(new DocumentFilter() {
             @Override
             public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
@@ -321,7 +317,7 @@ public class FrmPOSVisual extends javax.swing.JFrame {
         btnFinalizarPedido = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cafetería Aurora - Diseñador Visual POS");
+        setTitle("Atención de Pedidos - Cafetería Aurora");
         setBackground(new java.awt.Color(245, 237, 224));
 
         pnlSuperior.setBackground(new java.awt.Color(76, 47, 29));
@@ -574,7 +570,7 @@ public class FrmPOSVisual extends javax.swing.JFrame {
         } catch (Exception ignored) {}
 
         java.awt.EventQueue.invokeLater(() -> {
-            new FrmPOSVisual().setVisible(true);
+            new FrmPedido().setVisible(true);
         });
     }
 

@@ -5,7 +5,7 @@
             BOLETA DE VENTA ELECTRONICA             
                  B001-000101
 ====================================================
-Fecha Emision : 2026-10-15 08:32
+Fecha Emision : 2026-11-09 22:02
 Codigo Pedido : AU-1001
 Cliente       : Valeria Mendoza Ríos
 DNI           : 72849102
@@ -14,12 +14,12 @@ Metodo Pago   : Yape
 ----------------------------------------------------
 PRODUCTO                  CANT    P.UNIT   SUBTOTAL
 ----------------------------------------------------
-Latte                       2     12.00      24.00
-Brownies                    1      8.50       8.50
+Latte                        2     12.00      24.00
+Brownies                     1      8.50       8.50
 ----------------------------------------------------
-Op. Gravada (Subtotal):               S/   27.54
-IGV (18% Incluido):                   S/    4.96
-IMPORTE TOTAL A PAGAR:                S/   32.50
+Op. Gravada (Subtotal):               S/    27.54
+IGV (18% Incluido):                   S/     4.96
+IMPORTE TOTAL A PAGAR:                S/    32.50
 ====================================================
    Representacion impresa de Boleta Electronica     
         ¡Gracias por preferir Cafeteria Aurora!     

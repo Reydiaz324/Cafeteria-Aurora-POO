@@ -3,10 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Cafeter&#xed;a Aurora - Dise&#xf1;ador Visual POS"/>
-    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="e0" green="ed" red="f5" type="rgb"/>
-    </Property>
+    <Property name="title" type="java.lang.String" value="Atenci&#xf3;n de Pedidos - Cafeter&#xed;a Aurora"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
