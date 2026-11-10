@@ -127,21 +127,28 @@ public class PanelPedido extends JPanel {
         pnl.add(crearLabel("DNI Cliente:"), g);
         g.gridx = 5;
         txtDocumentoCliente = new JTextField("", 12);
+
+        // =========================================================================
+        // RESTRICCIÓN DE DNI (8 DÍGITOS NUMÉRICOS) - USO DE DOCUMENTFILTER
+        // Intercepta las pulsaciones de teclado antes de que se dibujen en pantalla:
+        // 1. Character.isDigit: descarta letras o símbolos especiales.
+        // 2. allowed <= 8: frena la entrada si el texto resultante supera los 8 dígitos.
+        // =========================================================================
         ((AbstractDocument) txtDocumentoCliente.getDocument()).setDocumentFilter(new DocumentFilter() {
             @Override
             public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
                 if (string == null) return;
                 StringBuilder sb = new StringBuilder();
                 for (char c : string.toCharArray()) {
-                    if (Character.isDigit(c)) {
+                    if (Character.isDigit(c)) { // Valida que solo sean dígitos numéricos [0-9]
                         sb.append(c);
                     }
                 }
                 String current = fb.getDocument().getText(0, fb.getDocument().getLength());
-                int allowed = 8 - current.length();
+                int allowed = 8 - current.length(); // Calcula cuántos dígitos faltan para el tope de 8
                 if (allowed > 0) {
                     String toInsert = sb.length() > allowed ? sb.substring(0, allowed) : sb.toString();
-                    super.insertString(fb, offset, toInsert, attr);
+                    super.insertString(fb, offset, toInsert, attr); // Inserta únicamente los dígitos permitidos
                 }
             }
 
@@ -150,15 +157,15 @@ public class PanelPedido extends JPanel {
                 if (text == null) return;
                 StringBuilder sb = new StringBuilder();
                 for (char c : text.toCharArray()) {
-                    if (Character.isDigit(c)) {
+                    if (Character.isDigit(c)) { // Filtra texto pegado desde portapapeles o teclado
                         sb.append(c);
                     }
                 }
                 String current = fb.getDocument().getText(0, fb.getDocument().getLength());
-                int allowed = 8 - (current.length() - length);
+                int allowed = 8 - (current.length() - length); // Longitud disponible considerando reemplazos
                 if (allowed > 0) {
                     String toReplace = sb.length() > allowed ? sb.substring(0, allowed) : sb.toString();
-                    super.replace(fb, offset, length, toReplace, attrs);
+                    super.replace(fb, offset, length, toReplace, attrs); // Aplica el cambio en el documento
                 }
             }
         });
@@ -231,13 +238,19 @@ public class PanelPedido extends JPanel {
         pnlProd.add(lblTituloProd, BorderLayout.NORTH);
 
         String[] colsProd = {"ID", "Producto", "Precio (S/)", "Stock Disp."};
+        // =========================================================================
+        // PROTECCIÓN DE TABLA EN MODO SOLO LECTURA (INMUTABILIDAD DE DATOS):
+        // 1. Sobrescribimos isCellEditable(row, col) retornando 'false' para impedir
+        //    que el usuario edite celdas con doble clic en el modelo o en la tabla.
+        // 2. setDefaultEditor(Object.class, null) anula el editor por defecto de Swing.
+        // =========================================================================
         modeloProductos = new DefaultTableModel(colsProd, 0) {
-            @Override public boolean isCellEditable(int row, int col) { return false; }
+            @Override public boolean isCellEditable(int row, int col) { return false; } // Bloquea edición en el modelo
         };
         dgvProductos = new JTable(modeloProductos) {
-            @Override public boolean isCellEditable(int row, int col) { return false; }
+            @Override public boolean isCellEditable(int row, int col) { return false; } // Bloquea edición en la vista
         };
-        dgvProductos.setDefaultEditor(Object.class, null);
+        dgvProductos.setDefaultEditor(Object.class, null); // Desactiva JTextField inline
         estilizarTabla(dgvProductos);
         dgvProductos.addMouseListener(new MouseAdapter() {
             @Override
@@ -265,12 +278,12 @@ public class PanelPedido extends JPanel {
 
         String[] colsDet = {"ID", "Producto", "Precio", "Cant.", "Subtotal (S/)"};
         modeloDetallePedido = new DefaultTableModel(colsDet, 0) {
-            @Override public boolean isCellEditable(int row, int col) { return false; }
+            @Override public boolean isCellEditable(int row, int col) { return false; } // Bloquea edición en el carrito
         };
         dgvDetallePedido = new JTable(modeloDetallePedido) {
-            @Override public boolean isCellEditable(int row, int col) { return false; }
+            @Override public boolean isCellEditable(int row, int col) { return false; } // Bloquea edición en el carrito
         };
-        dgvDetallePedido.setDefaultEditor(Object.class, null);
+        dgvDetallePedido.setDefaultEditor(Object.class, null); // Evita alterar precios o cantidades tipeando
         estilizarTabla(dgvDetallePedido);
         pnlDetalle.add(new JScrollPane(dgvDetallePedido), BorderLayout.CENTER);
 
@@ -510,23 +523,31 @@ public class PanelPedido extends JPanel {
         cargarProductos(0);
     }
 
+    // =========================================================================
+    // FLUJO PRINCIPAL DE VENTA: FINALIZAR PEDIDO Y EMITIR BOLETA
+    // Aplica: Separación de Capas (Vista -> Controlador), Validación de Negocio,
+    // Composición (Pedido -> Detalles) y Polimorfismo (ComprobantePago -> Boleta).
+    // =========================================================================
     private void finalizarPedido() {
+        // 1. Validación de Carrito No Vacío
         if (itemsCarrito.isEmpty()) {
             JOptionPane.showMessageDialog(this,
                 "Debe agregar al menos un producto al pedido.",
                 "Pedido vacío", JOptionPane.WARNING_MESSAGE);
-            return;
+            return; // Corta la ejecución si no hay productos
         }
 
+        // 2. Validación de DNI: Exige exactamente 8 dígitos con expresión regular \d{8}
         String doc = txtDocumentoCliente.getText().trim();
         if (doc.length() != 8 || !doc.matches("\\d{8}")) {
             JOptionPane.showMessageDialog(this,
                 "El DNI del cliente es obligatorio y debe tener exactamente 8 dígitos numéricos.",
                 "DNI Obligatorio", JOptionPane.WARNING_MESSAGE);
-            txtDocumentoCliente.requestFocus();
+            txtDocumentoCliente.requestFocus(); // Posiciona el cursor en el campo con error
             return;
         }
 
+        // 3. Validación de nombres y apellidos obligatorios
         String nombres = txtNombreCliente.getText().trim();
         String apellidos = txtApellidoCliente.getText().trim();
         if (nombres.isEmpty()) {
@@ -544,6 +565,7 @@ public class PanelPedido extends JPanel {
             return;
         }
 
+        // 4. Confirmación visual con el usuario
         int resp = JOptionPane.showConfirmDialog(this,
                 "¿Desea finalizar este pedido y emitir Boleta de Venta?",
                 "Confirmar Pedido", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -552,13 +574,16 @@ public class PanelPedido extends JPanel {
         }
 
         try {
+            // 5. Obtención del Empleado/Barista seleccionado en el JComboBox
             int idxEmp = cboEmpleado.getSelectedIndex();
             Empleado empleado = (idxEmp >= 0 && idxEmp < gestor.getEmpleados().size())
                     ? gestor.getEmpleados().get(idxEmp)
                     : gestor.getEmpleados().get(0);
 
+            // 6. HERENCIA: Instanciación de Cliente (subclase que hereda de Persona)
             Cliente cliente = new Cliente(gestor.getClientes().size() + 1, nombres, apellidos, doc, "987654321", "cliente@aurora.pe");
 
+            // 7. COMPOSICIÓN: El objeto Pedido agrupa al Cliente, Empleado y Método de Pago
             int nuevoId = gestor.getPedidos().size() + 1;
             Pedido pedido = new Pedido(
                     nuevoId,
@@ -568,10 +593,14 @@ public class PanelPedido extends JPanel {
                     "En local"
             );
 
+            // 8. Agrega cada item al pedido (Colecciones dinámicas)
             for (ItemCarritoVisual it : itemsCarrito) {
                 pedido.agregarItem(it.producto, it.cantidad, "Regular", "Caliente", "Ninguno");
             }
 
+            // 9. POLIMORFISMO Y DESACOPLAMIENTO DE CAPAS:
+            // La vista delega al Controlador (GestorCafeteria) y recibe una referencia
+            // de la clase abstracta padre ComprobantePago que apunta a un objeto Boleta.
             ComprobantePago comprobante = gestor.registrarPedidoYComprobante(pedido, "BOLETA", doc, "", "");
 
             String msg = String.format(

@@ -1,6 +1,15 @@
 package modelo;
 
+/**
+ * CLASE ABSTRACTA BASE: Persona
+ * Aplica:
+ * 1. ABSTRACCIÓN: Modela los datos comunes de cualquier persona en el sistema.
+ * 2. ENCAPSULAMIENTO: Atributos privados accesibles únicamente mediante getters y setters.
+ * 3. HERENCIA: Sirve como clase padre para Cliente y Empleado (no se puede instanciar directamente).
+ * 4. POLIMORFISMO: Define el método abstracto obtenerTipoPersona(), que cada subclase implementa a su manera.
+ */
 public abstract class Persona implements IExportableArchivo {
+    // Atributos encapsulados (privados)
     private int id;
     private String nombres;
     private String apellidos;
@@ -8,6 +17,7 @@ public abstract class Persona implements IExportableArchivo {
     private String telefono;
     private String correo;
 
+    // Constructor base invocado por las subclases mediante super(...)
     public Persona(int id, String nombres, String apellidos, String dni, String telefono, String correo) {
         this.id = id;
         this.nombres = nombres;
@@ -65,9 +75,11 @@ public abstract class Persona implements IExportableArchivo {
         this.correo = correo;
     }
 
+    // Método concreto reutilizado por herencia en Cliente y Empleado
     public String getNombreCompleto() {
         return (nombres != null ? nombres : "") + " " + (apellidos != null ? apellidos : "");
     }
 
+    // MÉTODO ABSTRACTO: Obliga a las subclases a definir cómo se identifican (Polimorfismo)
     public abstract String obtenerTipoPersona();
 }

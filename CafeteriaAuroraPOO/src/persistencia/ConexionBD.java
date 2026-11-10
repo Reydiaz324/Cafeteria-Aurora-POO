@@ -21,23 +21,29 @@ public class ConexionBD {
     private static Boolean conexionDisponible = null;
 
     /**
-     * Verifica si la base de datos BD_Cafeteria_POO está accesible en .\SQLEXPRESS.
+     * VERIFICACIÓN DE CONECTIVIDAD Y TOLERANCIA A FALLOS (HEARTBEAT):
+     * 1. 'synchronized': Asegura que múltiples hilos no compitan al evaluar la conexión.
+     * 2. 'SELECT 1': Consulta ultra rápida para saber si SQL Server está respondiendo.
+     * 3. Si la base de datos no está disponible, atrapa la excepción y retorna 'false'
+     *    sin tumbar la aplicación, activando el modo offline de contingencia con CSVs.
      */
     public static synchronized boolean hayConexion() {
         if (conexionDisponible != null) {
-            return conexionDisponible;
+            return conexionDisponible; // Caché del estado para no saturar con consultas repetitivas
         }
         try {
             List<String> lineas = ejecutarSqlcmd("SET NOCOUNT ON; SELECT 1;");
             conexionDisponible = (lineas != null && !lineas.isEmpty() && lineas.get(0).trim().equals("1"));
         } catch (Exception e) {
-            conexionDisponible = false;
+            conexionDisponible = false; // Entra en modo offline si hay error
         }
         return conexionDisponible;
     }
 
     /**
-     * Ejecuta una consulta o comando SQL utilizando la utilidad sqlcmd con autenticación integrada.
+     * EJECUCIÓN DIRECTA DE COMANDOS SQL MEDIANTE PROCESSBUILDER Y SQLCMD:
+     * - Autenticación integrada de Windows (-E) y certificado confiable (-C).
+     * - Evita problemas de configuración de DLLs nativas de JDBC en laboratorios universitarios.
      */
     public static List<String> ejecutarSqlcmd(String sql) {
         List<String> lineas = new ArrayList<>();

@@ -2,10 +2,18 @@ package modelo;
 
 import java.util.Locale;
 
+/**
+ * CLASE ABSTRACTA BASE: ComprobantePago
+ * Aplica:
+ * 1. IMPLEMENTACIÓN MÚLTIPLE DE INTERFACES: implements ICalculable, IExportableArchivo.
+ * 2. COMPOSICIÓN: Contiene una referencia a la clase Pedido.
+ * 3. POLIMORFISMO DINÁMICO: Define 'generarContenidoImprimible()', que se comporta distinto
+ *    si el comprobante emitido es una Boleta o una Factura.
+ */
 public abstract class ComprobantePago implements ICalculable, IExportableArchivo {
     private String numeroSerie;
     private String fechaEmision;
-    private Pedido pedido;
+    private Pedido pedido; // Composición: todo comprobante pertenece a un pedido
 
     public ComprobantePago(String numeroSerie, String fechaEmision, Pedido pedido) {
         this.numeroSerie = numeroSerie;
@@ -37,6 +45,9 @@ public abstract class ComprobantePago implements ICalculable, IExportableArchivo
         this.pedido = pedido;
     }
 
+    // =========================================================================
+    // IMPLEMENTACIÓN DE LA INTERFAZ ICalculable: Delega el cálculo al Pedido
+    // =========================================================================
     @Override
     public double calcularSubtotal() {
         return pedido != null ? pedido.calcularSubtotal() : 0.0;
@@ -52,10 +63,15 @@ public abstract class ComprobantePago implements ICalculable, IExportableArchivo
         return pedido != null ? pedido.calcularTotal() : 0.0;
     }
 
+    // =========================================================================
+    // MÉTODOS ABSTRACTOS (POLIMORFISMO EN TIEMPO DE EJECUCIÓN):
+    // Las subclases (Boleta, Factura) están obligadas a proporcionar su lógica propia.
+    // =========================================================================
     public abstract String getTipoComprobante();
 
     public abstract boolean validarDatosFiscales() throws DatosInvalidosException;
 
+    // Genera el texto del ticket .txt según el formato fiscal de cada comprobante
     public abstract String generarContenidoImprimible();
 
     @Override
