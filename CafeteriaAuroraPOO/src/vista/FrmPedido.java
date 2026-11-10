@@ -318,7 +318,6 @@ public class FrmPedido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Atención de Pedidos - Cafetería Aurora");
-        setBackground(new java.awt.Color(245, 237, 224));
 
         pnlSuperior.setBackground(new java.awt.Color(76, 47, 29));
         pnlSuperior.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 15, 10, 15));
@@ -328,24 +327,18 @@ public class FrmPedido extends javax.swing.JFrame {
         lblDni.setForeground(new java.awt.Color(255, 255, 255));
         lblDni.setText("DNI Cliente (8 dígitos):");
         pnlSuperior.add(lblDni);
-
-        txtDni.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         pnlSuperior.add(txtDni);
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombres:");
         pnlSuperior.add(lblNombre);
-
-        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         pnlSuperior.add(txtNombre);
 
         lblApellido.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(255, 255, 255));
         lblApellido.setText("Apellidos:");
         pnlSuperior.add(lblApellido);
-
-        txtApellido.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         pnlSuperior.add(txtApellido);
 
         lblEmpleado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -353,7 +346,6 @@ public class FrmPedido extends javax.swing.JFrame {
         lblEmpleado.setText("Atendido por:");
         pnlSuperior.add(lblEmpleado);
 
-        cboEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         pnlSuperior.add(cboEmpleado);
 
         getContentPane().add(pnlSuperior, java.awt.BorderLayout.NORTH);
@@ -391,7 +383,6 @@ public class FrmPedido extends javax.swing.JFrame {
                 "ID", "Producto", "Precio (S/)", "Stock"
             }
         ) {
-            private static final long serialVersionUID = 1L;
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
@@ -435,7 +426,6 @@ public class FrmPedido extends javax.swing.JFrame {
                 "ID", "Producto", "Precio", "Cant.", "Subtotal (S/)"
             }
         ) {
-            private static final long serialVersionUID = 1L;
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
             };
@@ -452,7 +442,6 @@ public class FrmPedido extends javax.swing.JFrame {
         pnlAccionesCarrito.setBackground(new java.awt.Color(245, 237, 224));
         pnlAccionesCarrito.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        btnQuitar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnQuitar.setText("Quitar Producto");
         btnQuitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -461,7 +450,6 @@ public class FrmPedido extends javax.swing.JFrame {
         });
         pnlAccionesCarrito.add(btnQuitar);
 
-        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -488,7 +476,6 @@ public class FrmPedido extends javax.swing.JFrame {
         lblMetodoPago.setText("Método de Pago:");
         pnlPago.add(lblMetodoPago);
 
-        cboMetodoPago.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         cboMetodoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta", "Yape", "Plin" }));
         pnlPago.add(cboMetodoPago);
 
@@ -532,6 +519,7 @@ public class FrmPedido extends javax.swing.JFrame {
         getContentPane().add(pnlInferior, java.awt.BorderLayout.SOUTH);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {
@@ -594,6 +582,7 @@ public class FrmPedido extends javax.swing.JFrame {
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblTotalTexto;
     private javax.swing.JPanel pnlAccionesCarrito;
+    private javax.swing.JPanel pnlBotonesAccion;
     private javax.swing.JPanel pnlCarrito;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlFiltro;
@@ -601,7 +590,6 @@ public class FrmPedido extends javax.swing.JFrame {
     private javax.swing.JPanel pnlPago;
     private javax.swing.JPanel pnlProductos;
     private javax.swing.JPanel pnlSuperior;
-    private javax.swing.JPanel pnlBotonesAccion;
     private javax.swing.JTable tblCarrito;
     private javax.swing.JTable tblProductos;
     private javax.swing.JTextField txtApellido;

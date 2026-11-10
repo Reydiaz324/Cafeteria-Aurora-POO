@@ -1,7 +1,7 @@
 ID_MOV;FECHA_HORA;TIPO;PRODUCTO;CANTIDAD;STOCK_ANT;STOCK_FINAL;PROVEEDOR_ORIGEN;DOC_REF;COSTO_TOTAL;EMPLEADO;MOTIVO
-1;2026-11-09 21:22;ENTRADA_PROVEEDOR;Muffins de naranja;20;25;45;Maria Almenara;F001-0008920;84.00;Mariana Vega;Abastecimiento matutino de repostería
-2;2026-11-09 21:22;ENTRADA_PROVEEDOR;Latte;15;45;60;Ransa;F002-0014510;97.50;Mariana Vega;Reposición de insumos para café espresso y leche
-3;2026-11-09 21:22;SALIDA_VENTA;Latte;2;58;58;Interno;S/D;0.00;Jose Castillo;Venta AU-1001 (B001-000101)
-4;2026-11-09 21:22;SALIDA_VENTA;Brownies;1;19;19;Interno;S/D;0.00;Jose Castillo;Venta AU-1001 (B001-000101)
-5;2026-11-09 21:22;SALIDA_VENTA;Chicken Ciabatta;2;30;30;Interno;S/D;0.00;Mariana Vega;Venta AU-1002 (B001-000102)
-6;2026-11-09 21:22;SALIDA_VENTA;Mocha Frapuccino;2;33;33;Interno;S/D;0.00;Mariana Vega;Venta AU-1002 (B001-000102)
+1;2026-11-09 22:16;ENTRADA_PROVEEDOR;Muffins de naranja;20;25;45;Maria Almenara;F001-0008920;84.00;Mariana Vega;Abastecimiento matutino de repostería
+2;2026-11-09 22:16;ENTRADA_PROVEEDOR;Latte;15;45;60;Ransa;F002-0014510;97.50;Mariana Vega;Reposición de insumos para café espresso y leche
+3;2026-11-09 22:16;SALIDA_VENTA;Latte;2;58;58;Interno;S/D;0.00;Jose Castillo;Venta AU-1001 (B001-000101)
+4;2026-11-09 22:16;SALIDA_VENTA;Brownies;1;19;19;Interno;S/D;0.00;Jose Castillo;Venta AU-1001 (B001-000101)
+5;2026-11-09 22:16;SALIDA_VENTA;Chicken Ciabatta;2;30;30;Interno;S/D;0.00;Mariana Vega;Venta AU-1002 (B001-000102)
+6;2026-11-09 22:16;SALIDA_VENTA;Mocha Frapuccino;2;33;33;Interno;S/D;0.00;Mariana Vega;Venta AU-1002 (B001-000102)

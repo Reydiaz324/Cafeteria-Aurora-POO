@@ -5,7 +5,7 @@
             BOLETA DE VENTA ELECTRONICA             
                  B001-000101
 ====================================================
-Fecha Emision : 2026-11-09 21:22
+Fecha Emision : 2026-11-09 22:16
 Codigo Pedido : AU-1001
 Cliente       : Valeria Mendoza Ríos
 DNI           : 72849102

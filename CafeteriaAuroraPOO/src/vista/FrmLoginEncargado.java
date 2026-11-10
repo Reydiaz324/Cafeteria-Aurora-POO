@@ -1,92 +1,132 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import javax.swing.BorderFactory;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 
+/**
+ * FORMULARIO DE ACCESO: FrmLoginEncargado
+ * Cuenta con archivo .form nativo para NetBeans GUI Builder ([Design]).
+ */
 public class FrmLoginEncargado extends JDialog {
     private static final long serialVersionUID = 1L;
     private static final String CLAVE_ENCARGADO = "1234";
-    private static final Color COLOR_MARRON_OSCURO = new Color(76, 47, 29);
-    private static final Color COLOR_FONDO = new Color(200, 155, 90);
 
-    private JPasswordField txtContrasena;
     private boolean autenticado = false;
 
     public FrmLoginEncargado(Frame parent) {
-        super(parent, "Acceso Encargado", true);
-        initUI();
+        super(parent, true);
+        initComponents();
+        setLocationRelativeTo(parent);
     }
 
-    private void initUI() {
-        setSize(380, 210);
-        setLocationRelativeTo(getParent());
+    public FrmLoginEncargado() {
+        this(null);
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        pnlHeader = new javax.swing.JPanel();
+        lblHeader = new javax.swing.JLabel();
+        pnlCenter = new javax.swing.JPanel();
+        lblMsg = new javax.swing.JLabel();
+        txtContrasena = new javax.swing.JPasswordField();
+        pnlBotones = new javax.swing.JPanel();
+        btnIngresar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Acceso Encargado");
+        setModal(true);
         setResizable(false);
-        setLayout(new BorderLayout());
 
-        // Header
-        JPanel pnlHeader = new JPanel();
-        pnlHeader.setBackground(COLOR_MARRON_OSCURO);
-        JLabel lblHeader = new JLabel("INICIO DE SESIÓN - ENCARGADO");
-        lblHeader.setForeground(Color.WHITE);
-        lblHeader.setFont(new Font("Segoe UI", Font.BOLD, 13));
-        lblHeader.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        pnlHeader.setBackground(new java.awt.Color(76, 47, 29));
+        pnlHeader.setLayout(new java.awt.FlowLayout());
+
+        lblHeader.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblHeader.setForeground(new java.awt.Color(255, 255, 255));
+        lblHeader.setText("INICIO DE SESIÓN - ENCARGADO");
+        lblHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnlHeader.add(lblHeader);
-        add(pnlHeader, BorderLayout.NORTH);
 
-        // Center Form
-        JPanel pnlCenter = new JPanel(new GridBagLayout());
-        pnlCenter.setBackground(COLOR_FONDO);
-        pnlCenter.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));
+        getContentPane().add(pnlHeader, java.awt.BorderLayout.NORTH);
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(6, 6, 6, 6);
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.WEST;
+        pnlCenter.setBackground(new java.awt.Color(200, 155, 90));
+        pnlCenter.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 20, 15, 20));
+        pnlCenter.setLayout(new java.awt.GridBagLayout());
 
-        JLabel lblMsg = new JLabel("Ingrese la contraseña del encargado:");
-        lblMsg.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        lblMsg.setForeground(new Color(55, 32, 18));
-        pnlCenter.add(lblMsg, gbc);
+        lblMsg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblMsg.setForeground(new java.awt.Color(55, 32, 18));
+        lblMsg.setText("Ingrese la contraseña del encargado:");
+        java.awt.GridBagConstraints gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        pnlCenter.add(lblMsg, gridBagConstraints);
 
-        gbc.gridy = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        txtContrasena = new JPasswordField(15);
-        txtContrasena.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        pnlCenter.add(txtContrasena, gbc);
-
-        add(pnlCenter, BorderLayout.CENTER);
-
-        // Buttons
-        JPanel pnlBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 8));
-        pnlBotones.setBackground(COLOR_FONDO);
-
-        BotonFlat btnIngresar = new BotonFlat("Ingresar", BotonFlat.Estilo.ACCION_CAFE);
-        btnIngresar.addActionListener(e -> validarAcceso());
-
-        BotonFlat btnCancelar = new BotonFlat("Cancelar", BotonFlat.Estilo.ACCION_CAFE);
-        btnCancelar.addActionListener(e -> {
-            autenticado = false;
-            dispose();
+        txtContrasena.setColumns(16);
+        txtContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContrasenaActionPerformed(evt);
+            }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        pnlCenter.add(txtContrasena, gridBagConstraints);
 
+        getContentPane().add(pnlCenter, java.awt.BorderLayout.CENTER);
+
+        pnlBotones.setBackground(new java.awt.Color(200, 155, 90));
+        pnlBotones.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 5));
+        pnlBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 12, 8));
+
+        btnIngresar.setBackground(new java.awt.Color(76, 47, 29));
+        btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setText("Ingresar");
+        btnIngresar.setFocusable(false);
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
         pnlBotones.add(btnIngresar);
-        pnlBotones.add(btnCancelar);
-        add(pnlBotones, BorderLayout.SOUTH);
 
-        txtContrasena.addActionListener(e -> validarAcceso());
+        btnCancelar.setBackground(new java.awt.Color(76, 47, 29));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setFocusable(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        pnlBotones.add(btnCancelar);
+
+        getContentPane().add(pnlBotones, java.awt.BorderLayout.SOUTH);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {
+        validarAcceso();
+    }
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {
+        autenticado = false;
+        dispose();
+    }
+
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {
+        validarAcceso();
     }
 
     private void validarAcceso() {
@@ -114,4 +154,15 @@ public class FrmLoginEncargado extends JDialog {
     public boolean isAutenticado() {
         return autenticado;
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JLabel lblHeader;
+    private javax.swing.JLabel lblMsg;
+    private javax.swing.JPanel pnlBotones;
+    private javax.swing.JPanel pnlCenter;
+    private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPasswordField txtContrasena;
+    // End of variables declaration//GEN-END:variables
 }

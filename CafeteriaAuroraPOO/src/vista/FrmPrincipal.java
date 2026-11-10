@@ -29,7 +29,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlNorte = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
-        lblSubtitulo = new javax.swing.JLabel();
         pnlCentro = new javax.swing.JPanel();
         btnModuloPedido = new javax.swing.JButton();
         btnModuloEncargado = new javax.swing.JButton();
@@ -50,12 +49,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("CAFETERÍA AURORA");
         pnlNorte.add(lblTitulo);
-
-        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        lblSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblSubtitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSubtitulo.setText("Sistema de Gestión y Punto de Venta (POS) - TECPRO Grupo 2");
-        pnlNorte.add(lblSubtitulo);
 
         getContentPane().add(pnlNorte, java.awt.BorderLayout.NORTH);
 
@@ -101,16 +94,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pnlSur.setBackground(new java.awt.Color(76, 47, 29));
         pnlSur.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 15, 10, 15));
-        pnlSur.setLayout(new java.awt.FlowLayout());
 
         lblPie.setFont(new java.awt.Font("Segoe UI", 2, 11)); // NOI18N
         lblPie.setForeground(new java.awt.Color(230, 215, 180));
-        lblPie.setText("Cafetería Aurora v2.5 - Conexión SQL Server BD_Cafeteria_POO y Soporte Offline");
         pnlSur.add(lblPie);
 
         getContentPane().add(pnlSur, java.awt.BorderLayout.SOUTH);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModuloPedidoActionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +135,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnModuloPedido;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel lblPie;
-    private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlCentro;
     private javax.swing.JPanel pnlNorte;

@@ -5,7 +5,7 @@
             BOLETA DE VENTA ELECTRONICA             
                  B001-000102
 ====================================================
-Fecha Emision : 2026-11-09 21:22
+Fecha Emision : 2026-11-09 22:16
 Codigo Pedido : AU-1002
 Cliente       : Camila Torres Vargas
 DNI           : 74125896

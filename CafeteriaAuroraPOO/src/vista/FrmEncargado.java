@@ -240,7 +240,6 @@ public class FrmEncargado extends javax.swing.JFrame {
         lblFiltroMes.setText("Mes / Período:");
         pnlBarraFiltros.add(lblFiltroMes);
 
-        cboMeses.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         cboMeses.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Todo el Año 2026 --", "Octubre 2026", "Septiembre 2026", "Agosto 2026", "Julio 2026", "Junio 2026", "Mayo 2026", "Abril 2026", "Marzo 2026", "Febrero 2026", "Enero 2026" }));
         cboMeses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +248,6 @@ public class FrmEncargado extends javax.swing.JFrame {
         });
         pnlBarraFiltros.add(cboMeses);
 
-        btnReporteVentas.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnReporteVentas.setText("Ventas por Mes");
         btnReporteVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,7 +256,6 @@ public class FrmEncargado extends javax.swing.JFrame {
         });
         pnlBarraFiltros.add(btnReporteVentas);
 
-        btnReportePagos.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnReportePagos.setText("Métodos de Pago");
         btnReportePagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,7 +264,6 @@ public class FrmEncargado extends javax.swing.JFrame {
         });
         pnlBarraFiltros.add(btnReportePagos);
 
-        btnReporteStock.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnReporteStock.setText("Inventario Actual");
         btnReporteStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,7 +282,6 @@ public class FrmEncargado extends javax.swing.JFrame {
                 "Mes / Período", "Cantidad de Pedidos", "Total Vendido (S/)", "Ticket Promedio (S/)"
             }
         ) {
-            private static final long serialVersionUID = 1L;
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
@@ -314,11 +309,9 @@ public class FrmEncargado extends javax.swing.JFrame {
         lblStockTit.setText("Reabastecer Stock:");
         pnlReabastecer.add(lblStockTit);
 
-        cboProductoStock.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         cboProductoStock.setPreferredSize(new java.awt.Dimension(240, 26));
         pnlReabastecer.add(cboProductoStock);
 
-        txtCantidadStock.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtCantidadStock.setText("20");
         txtCantidadStock.setPreferredSize(new java.awt.Dimension(50, 26));
         pnlReabastecer.add(txtCantidadStock);
@@ -336,7 +329,6 @@ public class FrmEncargado extends javax.swing.JFrame {
 
         pnlSur.add(pnlReabastecer, java.awt.BorderLayout.WEST);
 
-        btnCerrar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,6 +340,7 @@ public class FrmEncargado extends javax.swing.JFrame {
         getContentPane().add(pnlSur, java.awt.BorderLayout.SOUTH);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboMesesActionPerformed(java.awt.event.ActionEvent evt) {

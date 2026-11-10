@@ -1,276 +1,64 @@
 package vista;
 
 import controlador.GestorCafeteria;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelo.Producto;
 
+/**
+ * FORMULARIO DEL ENCARGADO: PanelEncargado
+ * Cuenta con archivo .form para habilitar la pestaÃ±a [Design] en NetBeans.
+ * Permite mover con el mouse los botones de reportes, combos de filtrado y tablas.
+ */
 public class PanelEncargado extends JPanel {
     private static final long serialVersionUID = 1L;
 
-    // Paleta exacta de C#
     public static final Color COLOR_FONDO = new Color(200, 155, 90);
     public static final Color COLOR_MARRON_OSCURO = new Color(76, 47, 29);
     public static final Color COLOR_BOTON_HOVER = new Color(126, 77, 47);
     public static final Color COLOR_TEXTO_TITULO = new Color(55, 32, 18);
 
     private final transient GestorCafeteria gestor;
-
-    // Resumen General y Selector de Período
-    private JComboBox<String> cboFiltroMes;
-    private JTextField txtTotalVendido;
-    private JTextField txtCantidadPedidos;
-    private JTextField txtTicketPromedio;
-
-    // Gestión de Stock
-    private JComboBox<String> cmbProductos;
-    private JTextField txtCantidadAgregar;
-
-    // Reportes
-    private JLabel lblTabla;
-    private JTable dgvReportes;
     private DefaultTableModel modeloReportes;
-    private int tipoReporteActivo = 1; // 1: Mas vendidos, 2: Stock, 3: Ventas por mes, 4: Metodo pago, 5: Clientes, 6: Empleados
+    private int tipoReporteActivo = 1;
+
+    public PanelEncargado() {
+        this(new GestorCafeteria());
+    }
 
     public PanelEncargado(GestorCafeteria gestor) {
-        this.gestor = gestor;
-        initUI();
+        this.gestor = gestor != null ? gestor : new GestorCafeteria();
+        initComponents();
+        personalizarComponentes();
         cargarResumenGeneral();
         cargarComboBoxProductos();
         cargarProductosMasVendidos();
     }
 
-    private void initUI() {
-        setLayout(new BorderLayout(12, 12));
-        setBackground(COLOR_FONDO);
-        setBorder(new EmptyBorder(16, 20, 16, 20));
-
-        // 1. Título y Resumen General Superior
-        JPanel pnlNorte = new JPanel(new BorderLayout(8, 8));
-        pnlNorte.setBackground(COLOR_FONDO);
-
-        JLabel lblTitulo = new JLabel("Panel del encargado");
-        lblTitulo.setFont(new Font("Georgia", Font.BOLD, 22));
-        lblTitulo.setForeground(COLOR_TEXTO_TITULO);
-        pnlNorte.add(lblTitulo, BorderLayout.NORTH);
-
-        pnlNorte.add(crearPanelResumen(), BorderLayout.CENTER);
-        add(pnlNorte, BorderLayout.NORTH);
-
-        // 2. Centro: Controles de Gestión de Stock + Botones de Reporte + Tabla de Reportes
-        JPanel pnlCentro = new JPanel(new BorderLayout(10, 10));
-        pnlCentro.setBackground(COLOR_FONDO);
-
-        JPanel pnlControlesSuperiores = new JPanel(new BorderLayout(8, 8));
-        pnlControlesSuperiores.setBackground(COLOR_FONDO);
-        pnlControlesSuperiores.add(crearPanelStock(), BorderLayout.NORTH);
-        pnlControlesSuperiores.add(crearPanelBotonesReportes(), BorderLayout.SOUTH);
-        pnlCentro.add(pnlControlesSuperiores, BorderLayout.NORTH);
-
-        JPanel pnlTablaContainer = new JPanel(new BorderLayout(6, 6));
-        pnlTablaContainer.setBackground(COLOR_FONDO);
-
-        lblTabla = new JLabel("Productos más vendidos");
-        lblTabla.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        lblTabla.setForeground(COLOR_TEXTO_TITULO);
-        pnlTablaContainer.add(lblTabla, BorderLayout.NORTH);
-
+    private void personalizarComponentes() {
         modeloReportes = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        dgvReportes = new JTable(modeloReportes) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        dgvReportes.setDefaultEditor(Object.class, null);
+        dgvReportes.setModel(modeloReportes);
         estilizarTabla(dgvReportes);
-        pnlTablaContainer.add(new JScrollPane(dgvReportes), BorderLayout.CENTER);
-
-        pnlCentro.add(pnlTablaContainer, BorderLayout.CENTER);
-        add(pnlCentro, BorderLayout.CENTER);
-    }
-
-    private JPanel crearPanelResumen() {
-        JPanel pnl = new JPanel(new GridBagLayout());
-        pnl.setBackground(COLOR_MARRON_OSCURO);
-        pnl.setBorder(new EmptyBorder(10, 16, 10, 16));
-
-        GridBagConstraints g = new GridBagConstraints();
-        g.insets = new Insets(4, 10, 4, 10);
-        g.fill = GridBagConstraints.HORIZONTAL;
-
-        // Fila 0: Título y Selector de Mes
-        JLabel lblResumen = new JLabel("RESUMEN DE VENTAS");
-        lblResumen.setFont(new Font("Segoe UI", Font.BOLD, 13));
-        lblResumen.setForeground(Color.WHITE);
-        g.gridx = 0; g.gridy = 0; g.gridwidth = 2;
-        pnl.add(lblResumen, g);
-
-        JPanel pnlFiltro = new JPanel(new FlowLayout(FlowLayout.RIGHT, 6, 0));
-        pnlFiltro.setOpaque(false);
-        JLabel lblFil = new JLabel("Filtrar por Mes:");
-        lblFil.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        lblFil.setForeground(Color.WHITE);
-        pnlFiltro.add(lblFil);
-
-        cboFiltroMes = new JComboBox<>(new String[]{
-            "Octubre 2026 (Mes Actual)",
-            "Septiembre 2026",
-            "Agosto 2026",
-            "Julio 2026",
-            "Junio 2026",
-            "Mayo 2026",
-            "Abril 2026",
-            "Marzo 2026",
-            "Febrero 2026",
-            "Enero 2026",
-            "Todo el Año 2026 (Acumulado)"
-        });
-        cboFiltroMes.setPreferredSize(new Dimension(215, 26));
-        cboFiltroMes.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        cboFiltroMes.addActionListener(e -> actualizarResumenYReporte());
-        pnlFiltro.add(cboFiltroMes);
-
-        g.gridx = 2; g.gridy = 0; g.gridwidth = 1;
-        pnl.add(pnlFiltro, g);
-
-        // Fila 1 y 2: Tarjetas de Resumen
-        g.gridwidth = 1;
-
-        g.gridx = 0; g.gridy = 1;
-        JLabel l1 = new JLabel("Total vendido:");
-        l1.setFont(new Font("Segoe UI", Font.BOLD, 11));
-        l1.setForeground(Color.WHITE);
-        pnl.add(l1, g);
-
-        g.gridx = 0; g.gridy = 2;
-        txtTotalVendido = new JTextField(10);
-        configurarCampoResumen(txtTotalVendido);
-        pnl.add(txtTotalVendido, g);
-
-        g.gridx = 1; g.gridy = 1;
-        JLabel l2 = new JLabel("Cantidad pedidos:");
-        l2.setFont(new Font("Segoe UI", Font.BOLD, 11));
-        l2.setForeground(Color.WHITE);
-        pnl.add(l2, g);
-
-        g.gridx = 1; g.gridy = 2;
-        txtCantidadPedidos = new JTextField(10);
-        configurarCampoResumen(txtCantidadPedidos);
-        pnl.add(txtCantidadPedidos, g);
-
-        g.gridx = 2; g.gridy = 1;
-        JLabel l3 = new JLabel("Ticket promedio:");
-        l3.setFont(new Font("Segoe UI", Font.BOLD, 11));
-        l3.setForeground(Color.WHITE);
-        pnl.add(l3, g);
-
-        g.gridx = 2; g.gridy = 2;
-        txtTicketPromedio = new JTextField(10);
-        configurarCampoResumen(txtTicketPromedio);
-        pnl.add(txtTicketPromedio, g);
-
-        return pnl;
-    }
-
-    private void configurarCampoResumen(JTextField txt) {
-        txt.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        txt.setEditable(false);
-        txt.setBackground(Color.WHITE);
-        txt.setForeground(COLOR_MARRON_OSCURO);
-        txt.setHorizontalAlignment(SwingConstants.CENTER);
-    }
-
-    private JPanel crearPanelStock() {
-        JPanel pnl = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 6));
-        pnl.setBackground(COLOR_FONDO);
-        pnl.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(COLOR_MARRON_OSCURO, 1),
-                "Actualizar Stock de Producto",
-                0, 0, new Font("Segoe UI", Font.BOLD, 11), COLOR_TEXTO_TITULO));
-
-        JLabel lblProd = new JLabel("Producto:");
-        lblProd.setFont(new Font("Segoe UI", Font.BOLD, 11));
-        lblProd.setForeground(COLOR_TEXTO_TITULO);
-        pnl.add(lblProd);
-
-        cmbProductos = new JComboBox<>();
-        cmbProductos.setPreferredSize(new Dimension(240, 26));
-        pnl.add(cmbProductos);
-
-        JLabel lblCant = new JLabel("Cantidad a agregar:");
-        lblCant.setFont(new Font("Segoe UI", Font.BOLD, 11));
-        lblCant.setForeground(COLOR_TEXTO_TITULO);
-        pnl.add(lblCant);
-
-        txtCantidadAgregar = new JTextField(6);
-        pnl.add(txtCantidadAgregar);
-
-        BotonFlat btnAgregarStock = new BotonFlat("Agregar stock", BotonFlat.Estilo.ACCION_CAFE);
-        btnAgregarStock.addActionListener(e -> agregarStock());
-        pnl.add(btnAgregarStock);
-
-        return pnl;
-    }
-
-    private JPanel crearPanelBotonesReportes() {
-        JPanel pnl = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 4));
-        pnl.setBackground(COLOR_FONDO);
-
-        BotonFlat btn1 = new BotonFlat("Productos más vendidos", BotonFlat.Estilo.ACCION_CAFE);
-        BotonFlat btn2 = new BotonFlat("Stock actual", BotonFlat.Estilo.ACCION_CAFE);
-        BotonFlat btn3 = new BotonFlat("Ventas por mes", BotonFlat.Estilo.ACCION_CAFE);
-        BotonFlat btn4 = new BotonFlat("Ventas por método de pago", BotonFlat.Estilo.ACCION_CAFE);
-        BotonFlat btn5 = new BotonFlat("Clientes frecuentes", BotonFlat.Estilo.ACCION_CAFE);
-        BotonFlat btn6 = new BotonFlat("Pedidos por empleado", BotonFlat.Estilo.ACCION_CAFE);
-        BotonFlat btnExp = new BotonFlat("Exportar Reporte TXT", BotonFlat.Estilo.ACCION_CAFE);
-
-        btn1.addActionListener(e -> cargarProductosMasVendidos());
-        btn2.addActionListener(e -> cargarStockActual());
-        btn3.addActionListener(e -> cargarVentasPorMes());
-        btn4.addActionListener(e -> cargarVentasMetodoPago());
-        btn5.addActionListener(e -> cargarClientesFrecuentes());
-        btn6.addActionListener(e -> cargarPedidosPorEmpleado());
-        btnExp.addActionListener(e -> exportarReporteEjecutivo());
-
-        pnl.add(btn1);
-        pnl.add(btn2);
-        pnl.add(btn3);
-        pnl.add(btn4);
-        pnl.add(btn5);
-        pnl.add(btn6);
-        pnl.add(btnExp);
-
-        return pnl;
     }
 
     private void estilizarTabla(JTable tabla) {
@@ -326,10 +114,368 @@ public class PanelEncargado extends JPanel {
         }
     }
 
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        pnlNorte = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        pnlResumen = new javax.swing.JPanel();
+        lblResumen = new javax.swing.JLabel();
+        pnlFiltro = new javax.swing.JPanel();
+        lblFil = new javax.swing.JLabel();
+        cboFiltroMes = new javax.swing.JComboBox<>();
+        lblTotVen = new javax.swing.JLabel();
+        txtTotalVendido = new javax.swing.JTextField();
+        lblCantPed = new javax.swing.JLabel();
+        txtCantidadPedidos = new javax.swing.JTextField();
+        lblTickProm = new javax.swing.JLabel();
+        txtTicketPromedio = new javax.swing.JTextField();
+        pnlCentro = new javax.swing.JPanel();
+        pnlControlesSuperiores = new javax.swing.JPanel();
+        pnlStock = new javax.swing.JPanel();
+        lblProd = new javax.swing.JLabel();
+        cmbProductos = new javax.swing.JComboBox<>();
+        lblCant = new javax.swing.JLabel();
+        txtCantidadAgregar = new javax.swing.JTextField();
+        btnAgregarStock = new javax.swing.JButton();
+        pnlBotonesReportes = new javax.swing.JPanel();
+        btnReporteMasVendidos = new javax.swing.JButton();
+        btnReporteStock = new javax.swing.JButton();
+        btnReporteVentasMes = new javax.swing.JButton();
+        btnReporteMetodoPago = new javax.swing.JButton();
+        btnReporteClientes = new javax.swing.JButton();
+        btnReporteEmpleados = new javax.swing.JButton();
+        btnExportarTXT = new javax.swing.JButton();
+        pnlTablaContainer = new javax.swing.JPanel();
+        lblTabla = new javax.swing.JLabel();
+        scrollReportes = new javax.swing.JScrollPane();
+        dgvReportes = new javax.swing.JTable();
+
+        setBackground(new java.awt.Color(200, 155, 90));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 20, 16, 20));
+        setLayout(new java.awt.BorderLayout(12, 12));
+
+        pnlNorte.setBackground(new java.awt.Color(200, 155, 90));
+        pnlNorte.setLayout(new java.awt.BorderLayout(8, 8));
+
+        lblTitulo.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(55, 32, 18));
+        lblTitulo.setText("Panel del encargado");
+        pnlNorte.add(lblTitulo, java.awt.BorderLayout.NORTH);
+
+        pnlResumen.setBackground(new java.awt.Color(76, 47, 29));
+        pnlResumen.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 16, 10, 16));
+        pnlResumen.setLayout(new java.awt.GridBagLayout());
+
+        lblResumen.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblResumen.setForeground(new java.awt.Color(255, 255, 255));
+        lblResumen.setText("RESUMEN DE VENTAS");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 10, 4, 10);
+        pnlResumen.add(lblResumen, gridBagConstraints);
+
+        pnlFiltro.setOpaque(false);
+        pnlFiltro.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 6, 0));
+
+        lblFil.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFil.setForeground(new java.awt.Color(255, 255, 255));
+        lblFil.setText("Filtrar por Mes:");
+        pnlFiltro.add(lblFil);
+
+        cboFiltroMes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        cboFiltroMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Octubre 2026 (Mes Actual)", "Septiembre 2026", "Agosto 2026", "Julio 2026", "Junio 2026", "Mayo 2026", "Abril 2026", "Marzo 2026", "Febrero 2026", "Enero 2026", "Todo el AÃ±o 2026 (Acumulado)" }));
+        cboFiltroMes.setPreferredSize(new java.awt.Dimension(215, 26));
+        cboFiltroMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboFiltroMesActionPerformed(evt);
+            }
+        });
+        pnlFiltro.add(cboFiltroMes);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 10, 4, 10);
+        pnlResumen.add(pnlFiltro, gridBagConstraints);
+
+        lblTotVen.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        lblTotVen.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotVen.setText("Total vendido:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 10, 4, 10);
+        pnlResumen.add(lblTotVen, gridBagConstraints);
+
+        txtTotalVendido.setEditable(false);
+        txtTotalVendido.setBackground(new java.awt.Color(255, 255, 255));
+        txtTotalVendido.setColumns(10);
+        txtTotalVendido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTotalVendido.setForeground(new java.awt.Color(76, 47, 29));
+        txtTotalVendido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(4, 10, 4, 10);
+        pnlResumen.add(txtTotalVendido, gridBagConstraints);
+
+        lblCantPed.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        lblCantPed.setForeground(new java.awt.Color(255, 255, 255));
+        lblCantPed.setText("Cantidad pedidos:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 10, 4, 10);
+        pnlResumen.add(lblCantPed, gridBagConstraints);
+
+        txtCantidadPedidos.setEditable(false);
+        txtCantidadPedidos.setBackground(new java.awt.Color(255, 255, 255));
+        txtCantidadPedidos.setColumns(10);
+        txtCantidadPedidos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtCantidadPedidos.setForeground(new java.awt.Color(76, 47, 29));
+        txtCantidadPedidos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(4, 10, 4, 10);
+        pnlResumen.add(txtCantidadPedidos, gridBagConstraints);
+
+        lblTickProm.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        lblTickProm.setForeground(new java.awt.Color(255, 255, 255));
+        lblTickProm.setText("Ticket promedio:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 10, 4, 10);
+        pnlResumen.add(lblTickProm, gridBagConstraints);
+
+        txtTicketPromedio.setEditable(false);
+        txtTicketPromedio.setBackground(new java.awt.Color(255, 255, 255));
+        txtTicketPromedio.setColumns(10);
+        txtTicketPromedio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTicketPromedio.setForeground(new java.awt.Color(76, 47, 29));
+        txtTicketPromedio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(4, 10, 4, 10);
+        pnlResumen.add(txtTicketPromedio, gridBagConstraints);
+
+        pnlNorte.add(pnlResumen, java.awt.BorderLayout.CENTER);
+
+        add(pnlNorte, java.awt.BorderLayout.NORTH);
+
+        pnlCentro.setBackground(new java.awt.Color(200, 155, 90));
+        pnlCentro.setLayout(new java.awt.BorderLayout(10, 10));
+
+        pnlControlesSuperiores.setBackground(new java.awt.Color(200, 155, 90));
+        pnlControlesSuperiores.setLayout(new java.awt.BorderLayout(8, 8));
+
+        pnlStock.setBackground(new java.awt.Color(200, 155, 90));
+        pnlStock.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(76, 47, 29)), "Actualizar Stock de Producto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 11), new java.awt.Color(55, 32, 18))); // NOI18N
+        pnlStock.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 12, 6));
+
+        lblProd.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        lblProd.setForeground(new java.awt.Color(55, 32, 18));
+        lblProd.setText("Producto:");
+        pnlStock.add(lblProd);
+
+        cmbProductos.setPreferredSize(new java.awt.Dimension(240, 26));
+        pnlStock.add(cmbProductos);
+
+        lblCant.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        lblCant.setForeground(new java.awt.Color(55, 32, 18));
+        lblCant.setText("Cantidad a agregar:");
+        pnlStock.add(lblCant);
+
+        txtCantidadAgregar.setColumns(6);
+        pnlStock.add(txtCantidadAgregar);
+
+        btnAgregarStock.setBackground(new java.awt.Color(76, 47, 29));
+        btnAgregarStock.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregarStock.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarStock.setText("Agregar stock");
+        btnAgregarStock.setFocusable(false);
+        btnAgregarStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarStockActionPerformed(evt);
+            }
+        });
+        pnlStock.add(btnAgregarStock);
+
+        pnlControlesSuperiores.add(pnlStock, java.awt.BorderLayout.NORTH);
+
+        pnlBotonesReportes.setBackground(new java.awt.Color(200, 155, 90));
+        pnlBotonesReportes.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 8, 4));
+
+        btnReporteMasVendidos.setBackground(new java.awt.Color(76, 47, 29));
+        btnReporteMasVendidos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReporteMasVendidos.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteMasVendidos.setText("Productos mÃ¡s vendidos");
+        btnReporteMasVendidos.setFocusable(false);
+        btnReporteMasVendidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteMasVendidosActionPerformed(evt);
+            }
+        });
+        pnlBotonesReportes.add(btnReporteMasVendidos);
+
+        btnReporteStock.setBackground(new java.awt.Color(76, 47, 29));
+        btnReporteStock.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReporteStock.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteStock.setText("Stock actual");
+        btnReporteStock.setFocusable(false);
+        btnReporteStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteStockActionPerformed(evt);
+            }
+        });
+        pnlBotonesReportes.add(btnReporteStock);
+
+        btnReporteVentasMes.setBackground(new java.awt.Color(76, 47, 29));
+        btnReporteVentasMes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReporteVentasMes.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteVentasMes.setText("Ventas por mes");
+        btnReporteVentasMes.setFocusable(false);
+        btnReporteVentasMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteVentasMesActionPerformed(evt);
+            }
+        });
+        pnlBotonesReportes.add(btnReporteVentasMes);
+
+        btnReporteMetodoPago.setBackground(new java.awt.Color(76, 47, 29));
+        btnReporteMetodoPago.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReporteMetodoPago.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteMetodoPago.setText("Ventas por mÃ©todo de pago");
+        btnReporteMetodoPago.setFocusable(false);
+        btnReporteMetodoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteMetodoPagoActionPerformed(evt);
+            }
+        });
+        pnlBotonesReportes.add(btnReporteMetodoPago);
+
+        btnReporteClientes.setBackground(new java.awt.Color(76, 47, 29));
+        btnReporteClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReporteClientes.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteClientes.setText("Clientes frecuentes");
+        btnReporteClientes.setFocusable(false);
+        btnReporteClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteClientesActionPerformed(evt);
+            }
+        });
+        pnlBotonesReportes.add(btnReporteClientes);
+
+        btnReporteEmpleados.setBackground(new java.awt.Color(76, 47, 29));
+        btnReporteEmpleados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReporteEmpleados.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporteEmpleados.setText("Pedidos por empleado");
+        btnReporteEmpleados.setFocusable(false);
+        btnReporteEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteEmpleadosActionPerformed(evt);
+            }
+        });
+        pnlBotonesReportes.add(btnReporteEmpleados);
+
+        btnExportarTXT.setBackground(new java.awt.Color(76, 47, 29));
+        btnExportarTXT.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExportarTXT.setForeground(new java.awt.Color(255, 255, 255));
+        btnExportarTXT.setText("Exportar Reporte TXT");
+        btnExportarTXT.setFocusable(false);
+        btnExportarTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarTXTActionPerformed(evt);
+            }
+        });
+        pnlBotonesReportes.add(btnExportarTXT);
+
+        pnlControlesSuperiores.add(pnlBotonesReportes, java.awt.BorderLayout.SOUTH);
+
+        pnlCentro.add(pnlControlesSuperiores, java.awt.BorderLayout.NORTH);
+
+        pnlTablaContainer.setBackground(new java.awt.Color(200, 155, 90));
+        pnlTablaContainer.setLayout(new java.awt.BorderLayout(6, 6));
+
+        lblTabla.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTabla.setForeground(new java.awt.Color(55, 32, 18));
+        lblTabla.setText("Productos mÃ¡s vendidos");
+        pnlTablaContainer.add(lblTabla, java.awt.BorderLayout.NORTH);
+
+        dgvReportes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        scrollReportes.setViewportView(dgvReportes);
+
+        pnlTablaContainer.add(scrollReportes, java.awt.BorderLayout.CENTER);
+
+        pnlCentro.add(pnlTablaContainer, java.awt.BorderLayout.CENTER);
+
+        add(pnlCentro, java.awt.BorderLayout.CENTER);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void cboFiltroMesActionPerformed(java.awt.event.ActionEvent evt) {
+        actualizarResumenYReporte();
+    }
+
+    private void btnAgregarStockActionPerformed(java.awt.event.ActionEvent evt) {
+        agregarStock();
+    }
+
+    private void btnReporteMasVendidosActionPerformed(java.awt.event.ActionEvent evt) {
+        cargarProductosMasVendidos();
+    }
+
+    private void btnReporteStockActionPerformed(java.awt.event.ActionEvent evt) {
+        cargarStockActual();
+    }
+
+    private void btnReporteVentasMesActionPerformed(java.awt.event.ActionEvent evt) {
+        cargarVentasPorMes();
+    }
+
+    private void btnReporteMetodoPagoActionPerformed(java.awt.event.ActionEvent evt) {
+        cargarVentasMetodoPago();
+    }
+
+    private void btnReporteClientesActionPerformed(java.awt.event.ActionEvent evt) {
+        cargarClientesFrecuentes();
+    }
+
+    private void btnReporteEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {
+        cargarPedidosPorEmpleado();
+    }
+
+    private void btnExportarTXTActionPerformed(java.awt.event.ActionEvent evt) {
+        exportarReporteEjecutivo();
+    }
+
     private int obtenerMesSeleccionado() {
         if (cboFiltroMes == null) return 10;
         int idx = cboFiltroMes.getSelectedIndex();
-        if (idx == 10) return 0; // Todo el año
+        if (idx == 10) return 0;
         return 10 - idx;
     }
 
@@ -346,7 +492,7 @@ public class PanelEncargado extends JPanel {
             case 3: return "Marzo 2026";
             case 2: return "Febrero 2026";
             case 1: return "Enero 2026";
-            default: return "Todo el Año 2026";
+            default: return "Todo el AÃ±o 2026";
         }
     }
 
@@ -362,7 +508,6 @@ public class PanelEncargado extends JPanel {
         }
     }
 
-    // Lógica de datos del Encargado
     public void cargarResumenGeneral() {
         int mes = obtenerMesSeleccionado();
         double[] resumen = gestor.obtenerResumenGeneralVentas(mes, 2026);
@@ -381,7 +526,7 @@ public class PanelEncargado extends JPanel {
     private void agregarStock() {
         int idx = cmbProductos.getSelectedIndex();
         if (idx < 0) {
-            JOptionPane.showMessageDialog(this, "Seleccione un producto.", "Validación", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Seleccione un producto.", "ValidaciÃ³n", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -391,7 +536,7 @@ public class PanelEncargado extends JPanel {
             cantidad = Integer.parseInt(cantStr);
             if (cantidad <= 0) throw new NumberFormatException();
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Ingrese una cantidad válida mayor a cero.", "Validación", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese una cantidad vÃ¡lida mayor a cero.", "ValidaciÃ³n", JOptionPane.WARNING_MESSAGE);
             txtCantidadAgregar.requestFocus();
             return;
         }
@@ -416,7 +561,7 @@ public class PanelEncargado extends JPanel {
 
     public void cargarProductosMasVendidos() {
         tipoReporteActivo = 1;
-        lblTabla.setText("Productos más vendidos - " + obtenerNombreMesSeleccionado());
+        lblTabla.setText("Productos mÃ¡s vendidos - " + obtenerNombreMesSeleccionado());
         String[] cols = {"Producto", "Cantidad Vendida", "Total Recaudado (S/)"};
         modeloReportes.setDataVector(new Object[][]{}, cols);
         aplicarEstiloHeader(dgvReportes);
@@ -434,7 +579,7 @@ public class PanelEncargado extends JPanel {
     public void cargarStockActual() {
         tipoReporteActivo = 2;
         lblTabla.setText("Stock actual de productos");
-        String[] cols = {"Producto", "Categoría", "Stock Actual", "Proveedor", "Estado"};
+        String[] cols = {"Producto", "CategorÃ­a", "Stock Actual", "Proveedor", "Estado"};
         modeloReportes.setDataVector(new Object[][]{}, cols);
         aplicarEstiloHeader(dgvReportes);
 
@@ -446,8 +591,8 @@ public class PanelEncargado extends JPanel {
 
     public void cargarVentasPorMes() {
         tipoReporteActivo = 3;
-        lblTabla.setText("Ventas agrupadas por mes (Histórico 2026)");
-        String[] cols = {"Mes / Período", "Cantidad de Pedidos", "Total Vendido (S/)", "Ticket Promedio (S/)"};
+        lblTabla.setText("Ventas agrupadas por mes (HistÃ³rico 2026)");
+        String[] cols = {"Mes / PerÃ­odo", "Cantidad de Pedidos", "Total Vendido (S/)", "Ticket Promedio (S/)"};
         modeloReportes.setDataVector(new Object[][]{}, cols);
         aplicarEstiloHeader(dgvReportes);
 
@@ -464,8 +609,8 @@ public class PanelEncargado extends JPanel {
 
     public void cargarVentasMetodoPago() {
         tipoReporteActivo = 4;
-        lblTabla.setText("Ventas por método de pago - " + obtenerNombreMesSeleccionado());
-        String[] cols = {"Método de Pago", "Cantidad de Pedidos", "Total Vendido (S/)"};
+        lblTabla.setText("Ventas por mÃ©todo de pago - " + obtenerNombreMesSeleccionado());
+        String[] cols = {"MÃ©todo de Pago", "Cantidad de Pedidos", "Total Vendido (S/)"};
         modeloReportes.setDataVector(new Object[][]{}, cols);
         aplicarEstiloHeader(dgvReportes);
 
@@ -526,11 +671,47 @@ public class PanelEncargado extends JPanel {
             }
 
             JOptionPane.showMessageDialog(this,
-                "Reporte ejecutivo exportado con éxito en:\n" + archivo.getAbsolutePath(),
+                "Reporte ejecutivo exportado con Ã©xito en:\n" + archivo.getAbsolutePath(),
                 "Reporte Exportado", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error al exportar reporte: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarStock;
+    private javax.swing.JButton btnExportarTXT;
+    private javax.swing.JButton btnReporteClientes;
+    private javax.swing.JButton btnReporteEmpleados;
+    private javax.swing.JButton btnReporteMasVendidos;
+    private javax.swing.JButton btnReporteMetodoPago;
+    private javax.swing.JButton btnReporteStock;
+    private javax.swing.JButton btnReporteVentasMes;
+    private javax.swing.JComboBox<String> cboFiltroMes;
+    private javax.swing.JComboBox<String> cmbProductos;
+    private javax.swing.JTable dgvReportes;
+    private javax.swing.JLabel lblCant;
+    private javax.swing.JLabel lblCantPed;
+    private javax.swing.JLabel lblFil;
+    private javax.swing.JLabel lblProd;
+    private javax.swing.JLabel lblResumen;
+    private javax.swing.JLabel lblTabla;
+    private javax.swing.JLabel lblTickProm;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTotVen;
+    private javax.swing.JPanel pnlBotonesReportes;
+    private javax.swing.JPanel pnlCentro;
+    private javax.swing.JPanel pnlControlesSuperiores;
+    private javax.swing.JPanel pnlFiltro;
+    private javax.swing.JPanel pnlNorte;
+    private javax.swing.JPanel pnlResumen;
+    private javax.swing.JPanel pnlStock;
+    private javax.swing.JPanel pnlTablaContainer;
+    private javax.swing.JScrollPane scrollReportes;
+    private javax.swing.JTextField txtCantidadAgregar;
+    private javax.swing.JTextField txtCantidadPedidos;
+    private javax.swing.JTextField txtTicketPromedio;
+    private javax.swing.JTextField txtTotalVendido;
+    // End of variables declaration//GEN-END:variables
 }

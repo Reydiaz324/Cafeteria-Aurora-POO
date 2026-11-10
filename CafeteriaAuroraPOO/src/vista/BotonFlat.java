@@ -33,9 +33,17 @@ public class BotonFlat extends JButton {
     public static final Color COLOR_CAFE_HOVER = new Color(126, 77, 47);
     public static final Color COLOR_CAFE_PRESS = new Color(85, 48, 26);
 
+    public BotonFlat() {
+        this("", Estilo.ACCION_CAFE);
+    }
+
+    public BotonFlat(String texto) {
+        this(texto, Estilo.ACCION_CAFE);
+    }
+
     public BotonFlat(String texto, Estilo estilo) {
         super(texto);
-        this.estilo = estilo;
+        this.estilo = estilo != null ? estilo : Estilo.ACCION_CAFE;
 
         setContentAreaFilled(false);
         setBorderPainted(false);
