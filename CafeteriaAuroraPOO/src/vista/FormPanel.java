@@ -44,6 +44,7 @@ public class FormPanel extends JFrame {
     private BotonFlat btnInicio;
     private BotonFlat btnpedido;
     private BotonFlat btnEncargado;
+    private BotonFlat btnPOSVisual;
     private BotonFlat btnSalir;
 
     private JLabel lblEstadoSesion;
@@ -117,17 +118,19 @@ public class FormPanel extends JFrame {
         btnInicio = new BotonFlat("  Inicio", BotonFlat.Estilo.MENU_LATERAL);
         btnpedido = new BotonFlat("  Pedido", BotonFlat.Estilo.MENU_LATERAL);
         btnEncargado = new BotonFlat("  Encargado", BotonFlat.Estilo.MENU_LATERAL);
+        btnPOSVisual = new BotonFlat("  POS Visual", BotonFlat.Estilo.MENU_LATERAL);
         btnSalir = new BotonFlat("  Cerrar", BotonFlat.Estilo.MENU_LATERAL);
 
         btnInicio.addActionListener(e -> mostrarInicio());
         btnpedido.addActionListener(e -> mostrarPedido());
         btnEncargado.addActionListener(e -> mostrarEncargado());
+        btnPOSVisual.addActionListener(e -> new FrmPOSVisual(gestor).setVisible(true));
         btnSalir.addActionListener(e -> confirmarSalida());
 
         pnlBotones.add(btnInicio);
         pnlBotones.add(btnpedido);
         pnlBotones.add(btnEncargado);
-        pnlBotones.add(new JLabel("")); // espaciador
+        pnlBotones.add(btnPOSVisual);
         pnlBotones.add(new JLabel("")); // espaciador
         pnlBotones.add(btnSalir);
 
